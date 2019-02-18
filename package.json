@@ -1,0 +1,11 @@
+{
+  "name": "GraphQLTutorail",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:PaulLNH/GraphQLTutorail.git",
+  "author": "paullnh <plaird83@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "graphql-yoga": "^1.17.4"
+  }
+}
