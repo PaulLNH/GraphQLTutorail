@@ -1,5 +1,7 @@
+# This is the main configuration for your Prisma setup
 # The HTTP endpoint for your Prisma API
-#endpoint: ''endpoint: https://us1.prisma.sh/plaird83-81ea8c/GraphQLTutorail/dev
+#endpoint: ''
+endpoint: https://us1.prisma.sh/plaird83-81ea8c/GraphQLTutorail/dev
 
 
 #Points to the file that contains your datamodel
@@ -9,3 +11,8 @@ datamodel: datamodel.prisma
 generate:
   - generator: javascript-client
     output: ../src/generated/prisma-client
+
+# Adds the prisma generate to the prisma deploy event to auto generate a new JS file exposing the new model
+hooks:
+  post-deploy:
+    - prisma generate

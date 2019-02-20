@@ -1,6 +1,20 @@
+# This file defines your application’s models
+# When changing the data model you need to run the following commands:
+# `prisma deploy` - This updates the API with the new model
+# `prisma generate` - This generates a new JS file that exposes the CRUD methods for the newly added model
+# NOTE: `prisma generate` has bee added as a hook in prisma.yml and no longer needs to be invoked to update the model.
 type Link {
     id: ID! @unique
     createdAt: DateTime!
     description: String!
     url: String!
+    postedBy: User
+}
+
+type User {
+    id: ID! @unique
+    name: String!
+    email: String! @unique
+    password: String!
+    links: [Link!]!
 }
