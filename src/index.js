@@ -1,13 +1,17 @@
 /**
  * Left off @ https://www.howtographql.com/graphql-js/6-authentication/
  * run search on this string:
- * 'Two things have changed in the implementation compared to the previous implementation in'
+ * 'Testing the authentication flow'
  */
 
 
 
 const { GraphQLServer } = require('graphql-yoga');
 const { prisma } = require('./generated/prisma-client');
+const Query = require('./resolvers/Query');
+const Mutation = require('./resolvers/Mutation');
+const User = require('./resolvers/User');
+const Link = require('./resolvers/Link');
 
 // let links = [{
 //     id: 'link-0',
@@ -19,22 +23,10 @@ const { prisma } = require('./generated/prisma-client');
 
 // Implementation of the GraphQL schema
 const resolvers = {
-    Query: {
-        info: () => `This is the API of a Hackernews Clone`,
-        // Feed accesses the prisma client and acts as a medium to access the database and perform CRUD operations for your models
-        feed: (root, args, context, info) => {
-            return context.prisma.links()
-        },
-    },
-    Mutation: {
-        // Invoking a function on the prisma client which is attached to context
-        post: (root, args, context) => {
-            return context.prisma.createLink({
-                url: args.url,
-                description: args.description,
-            })
-        },
-    },
+    Query,
+    Mutation,
+    User,
+    Link
 };
 
 // Pass the schema and the resolvers into the GraphQL Server (imported from graphql-yoha)
